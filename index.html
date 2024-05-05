@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+ <html>
+    <head>
+        <title>Watch Collections</title>
+        <link rel="stylesheet" href="styles.css ">                
+    </head>
+    <body>
+        <header>
+            <div class="overlay"></div>
+            <nav>
+                <h2>Watch Collections</h2>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="IndexedDB.html">IndexedDB</a></li>
+                    <li><a href="local Storage.html">localStorage</a></li>
+                    <li><a href="session Storage.html">sessionStorage</a></li>
+                    <li><a href="WebSQL.html">WebSQL</a></li>
+    <li class="cart">
+        <a href="cart.html">
+            <ion-icon name="basket"></ion-icon>Cart<span>0</span>
+        </a>
+    </li>
+    <br />
+    <br />
+    <form id="form">
+        <input type="search" id="query" name="q" placeholder="Search...">
+        <button>Search</button>
+    </form>
+</ul>
+            </nav>
+        </header>
+
+        <div class="container">
+            <div class="image">
+                <img src="Image/9.jpg" alt="Panerai Watch">
+                <h4>Panerai Watch</h4>
+                <h4>৳2,000.00</h4>
+                <a class="add-cart cart1" href="#">Add Cart</a>
+            </div>
+            <div class="image">
+                <img src="Image/2.jpg" alt="Skmei 1260">
+                <h4>Skmei 1260</h4>
+                <h4>৳1,350.00</h4>
+                <a class="add-cart cart2" href="#">Add Cart</a>
+            </div>
+            <div class="image">
+                <img src="Image/3.jpg" alt="Apple A1 smart watch">
+                <h4>Apple A1 smart watch</h4>
+                <h4>৳1,300.00</h4>
+                <a class="add-cart cart3" href="#">Add Cart</a>
+            </div>
+            <div class="image">
+                <img src="Image/4.jpg" alt="Curren 9052">
+                <h4>Curren 9052</h4>
+                <h4>৳1,200.00</h4>
+                <a class="add-cart cart4" href="#">Add Cart</a>
+            </div>
+            <div class="image">
+                <img src="Image/5.jpg" alt="DZ09 smart watch">
+                <h4>DZ09 smart watch</h4>
+                <h4>৳1,700.00</h4>
+                <a class="add-cart cart5" href="#">Add Cart</a>
+            </div>
+            <div class="image">
+                <img src="Image/6.jpg" alt="DZ10 smart watch">
+                <h4>DZ10 smart watch</h4>
+                <h4>৳1,500.00</h4>
+                <a class="add-cart cart6" href="#">Add Cart</a>
+            </div>
+            <div class="image">
+                <img src="Image/7.jpg" alt="Mocrux CK12">
+                <h4>Mocrux CK12</h4>
+                <h4>৳1,850.00</h4>
+                <a class="add-cart cart7" href="#">Add Cart</a>
+            </div>
+            <div class="image">
+                <img src="Image/8.jpg" alt="Naviforce 9090">
+                <h4>Naviforce 9090</h4>
+                <h4>৳1,750.00</h4>
+                <a class="add-cart cart8" href="#">Add Cart</a>
+            </div>
+        </div>
+        <script src="main.js"></script>
+   <div>
+        <section class="product-submission container">
+            <h2 class="section-title">Upload a New Product</h2><br>
+            <form id="productForm"><br><br>
+                <label for="title">Product Title:</label>
+                <input type="text" id="title" name="title" required><br><br>
+
+                <label for="price">Product Price:</label>
+                <input type="number" id="price" name="price" required><br><br>
+
+                <label for="image">Product Image:</label>
+                <input type="file" id="image" name="image" accept="image/*" required><br><br>
+
+                <img id="previewImage" alt="Preview" style="display:none; max-width: 100%; margin-top: 10px;"><br>
+
+                <button type="button" onclick="submitProduct()">Submit Product</button>
+            </form>
+        </section>
+
+        <!-- New Products Section -->
+        <section class="new-products container">
+            <h2 class="section-title">Recent Upload Products</h2>
+            <div id="newProducts"></div>
+        </section>
+    </div>
+</body>
+</html>
+<script>
+    function submitProduct() {
+
+        const title = document.getElementById('title').value;
+        const price = document.getElementById('price').value;
+        const imageInput = document.getElementById('image');
+        if (!title || !price || !imageInput.files[0]) {
+            alert('Please fill in all fields');
+            return;
+        }
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const image = e.target.result;
+
+            const newProductBox = document.createElement('div');
+            newProductBox.className = 'product-box';
+
+            const productHTML = `
+      <img src="${image}" alt="${title}" class="product-img">
+      <h2 class="product-title">${title}</h2>
+      <span class="product-price">৳${price}</span>
+                  <a class="add-cart cart9" href="#">Add Cart</a>
+      <i class='bx bx-shopping-bag add-cart'></i>`;
+            newProductBox.innerHTML = productHTML;
+            const newProductsSection = document.getElementById('newProducts');
+            newProductsSection.insertBefore(newProductBox, newProductsSection.firstChild);
+            document.getElementById('title').value = '';
+            document.getElementById('price').value = '';
+            document.getElementById('image').value = '';
+        };
+        reader.readAsDataURL(imageInput.files[0]);
+    }
+</script>
+        <footer>
+            <fieldset id="f1">
+                <div class="footer-bottom">
+                    <p align="center" ;><strong>Copy Right &copy; 2023 || Watch Collections</strong></p>
+                </div>
+           </fieldset>
+        </footer>
+    </body>
+ </html>

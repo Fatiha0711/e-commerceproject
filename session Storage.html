@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Session Storage</title>
+<style type="text/css">
+	input[type=text] {
+  width: 300px;
+  text-align:center;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+}
+	button {
+  width: 150px;
+  text-align:center;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #AFACAA;
+  padding: 10px;
+}
+button:hover{
+	background-color: #6599F3;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+// Check if the localStorage object exists
+if(localStorage) {
+	$(document).ready(function() {
+		$(".save").click(function() {
+			// Get input name
+			var firstName = $("#firstName").val();
+			var lastName = $("#lastName").val();
+			
+			// Store data
+    		sessionStorage.setItem("first_name", firstName,);
+    		sessionStorage.setItem("last_name", lastName,);
+			alert("Your name is saved.");
+		});
+		$(".access").click(function() {
+			// Retrieve data
+    		alert("Hi, " + sessionStorage.getItem("first_name") + " " + sessionStorage.getItem("last_name"));
+		});
+	});
+} else {
+    alert("Sorry, your browser do not support local storage.");
+}
+</script>
+</head>
+<body style="background-color: #azure; background-image: url('bg.jpg'); padding: 25px;">
+	<h1 style="text-align: center;color: white;"><a href="home.html"></a><br>Session Storage</h1>
+	<header>
+		<div class="overlay"></div>
+		<nav>
+			<h2>Watch Collections</h2>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="IndexedDB.html">IndexedDB</a></li>
+				<li><a href="local Storage.html">localStorage</a></li>
+				<li><a href="session Storage.html">sessionStorage</a></li>
+				<li><a href="WebSQL.html">WebSQL</a></li>
+			</ul>
+		</nav>
+	</header>
+	<br><br><br>
+	<div class="abc" style="margin-left: 30%; margin-right: 30%">
+		<form style="text-align: center; width: 100%;">
+			<label style="color: black; font-size: larger;">First Name:<br> <input type="text" id="firstName"></label><br><br>
+			<label style="color: black; font-size: larger;">Last Name: <br><input type="text" id="lastName"></label><br><br>
+			<button type="button" class="save">Save</button>
+			<button type="button" class="access">Say Hi</button>
+		</form>
+		<br><br><br>
+	</div>
+</body>
+</html>
